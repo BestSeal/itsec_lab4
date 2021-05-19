@@ -8,8 +8,8 @@ namespace itsec_lab4
     {
         static void Main(string[] args)
         {
-            const string openPath = @"D:\1.bmp";
-            const string savePath = @"D:\bmp.bmp";
+            const string openPath = @"D:\Karl_Vigers_Dzhoy_Bitti_-_Razrabotka_trebovaniy_k_programmnomu_obespecheniyu_3-e_izdanie_-_2014.pdf";
+            const string savePath = @"D:\out.pdf";
             
             var key = new List<byte>(Encoding.UTF8.GetBytes("Какой-то очень крутой ключ!"));
             var message = new List<byte>(File.ReadAllBytes(openPath));

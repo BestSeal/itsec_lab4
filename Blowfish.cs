@@ -9,6 +9,8 @@ namespace itsec_lab4
         private int _shiftSize;
         private const byte Filler = 0;
         private const int Rounds = 16;
+        private readonly ulong _initValL = 0x00000000;
+        private readonly ulong _initValR = 0x00000000;
 
         public Blowfish(List<byte> key)
         {
@@ -26,23 +28,20 @@ namespace itsec_lab4
                 _sPblocks.P[i] ^= keyInd;
             }
 
-            ulong initValL = 0x00000000;
-            ulong initValR = 0x00000000;
-
             for (int i = 0; i < 18; i++)
             {
-                Encipher(ref initValR, ref initValL);
-                _sPblocks.P[i] = initValR;
-                _sPblocks.P[++i] = initValL;
+                Encipher(ref _initValR, ref _initValL);
+                _sPblocks.P[i] = _initValR;
+                _sPblocks.P[++i] = _initValL;
             }
 
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 256; j++)
                 {
-                    Encipher(ref initValR, ref initValL);
-                    _sPblocks.S[i, j] = initValR;
-                    _sPblocks.S[i, ++j] = initValL;
+                    Encipher(ref _initValR, ref _initValL);
+                    _sPblocks.S[i, j] = _initValR;
+                    _sPblocks.S[i, ++j] = _initValL;
                 }
             }
         }

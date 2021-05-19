@@ -14,7 +14,6 @@ namespace itsec_lab4
         {
             _sPblocks = new SPblocks();
 
-            //расширение ключа
             uint keyInd = 0;
 
             for (int i = 0, k = 0; i < 18; i++)
